@@ -35,7 +35,7 @@
                 <version>0.4.27</version>
                 <configuration>
                     <sourceDirectory>${basedir}/src/main/resources/schema/json</sourceDirectory>
-                    <targetPackage>cz.zcu.kiv.data.eegbase.json</targetPackage>
+                    <targetPackage>cz.zcu.kiv.data.crcns.json</targetPackage>
                     <annotationStyle>gson</annotationStyle>
                     <sourceType>json</sourceType>
                 </configuration>

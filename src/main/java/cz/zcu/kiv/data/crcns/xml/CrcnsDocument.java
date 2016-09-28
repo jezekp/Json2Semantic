@@ -1,7 +1,7 @@
-package cz.zcu.kiv;
+package cz.zcu.kiv.data.crcns.xml;
 
 import cz.zcu.kiv.data.crcns.xml.Resource;
-import cz.zcu.kiv.data.eegbase.json.Doc;
+import cz.zcu.kiv.data.crcns.json.Doc;
 
 /**
  * Created by petr-jezek on 28.9.16.
