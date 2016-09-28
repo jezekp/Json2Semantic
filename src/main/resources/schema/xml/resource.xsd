@@ -1,0 +1,94 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://datacite.org/schema/kernel-2.2" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="resource">
+            <xs:complexType>
+                  <xs:sequence>
+                        <xs:element name="identifier">
+                              <xs:complexType>
+                                    <xs:simpleContent>
+                                          <xs:extension base="xs:string">
+                                                <xs:attribute type="xs:string" name="identifierType"/>
+                                          </xs:extension>
+                                    </xs:simpleContent>
+                              </xs:complexType>
+                        </xs:element>
+                        <xs:element name="creators">
+                              <xs:complexType>
+                                    <xs:sequence>
+                                          <xs:element name="creator" maxOccurs="unbounded" minOccurs="0">
+                                                <xs:complexType>
+                                                      <xs:sequence>
+                                                            <xs:element type="xs:string" name="creatorName"/>
+                                                      </xs:sequence>
+                                                </xs:complexType>
+                                          </xs:element>
+                                    </xs:sequence>
+                              </xs:complexType>
+                        </xs:element>
+                        <xs:element name="titles">
+                              <xs:complexType>
+                                    <xs:sequence>
+                                          <xs:element name="title" maxOccurs="unbounded" minOccurs="0">
+                                                <xs:complexType>
+                                                      <xs:simpleContent>
+                                                            <xs:extension base="xs:string">
+                                                                  <xs:attribute type="xs:string" name="titleType" use="optional"/>
+                                                            </xs:extension>
+                                                      </xs:simpleContent>
+                                                </xs:complexType>
+                                          </xs:element>
+                                    </xs:sequence>
+                              </xs:complexType>
+                        </xs:element>
+                        <xs:element type="xs:string" name="publisher"/>
+                        <xs:element type="xs:short" name="publicationYear"/>
+                        <xs:element name="subjects">
+                              <xs:complexType>
+                                    <xs:sequence>
+                                          <xs:element type="xs:string" name="subject" maxOccurs="unbounded" minOccurs="0"/>
+                                    </xs:sequence>
+                              </xs:complexType>
+                        </xs:element>
+                        <xs:element type="xs:string" name="language"/>
+                        <xs:element name="resourceType">
+                              <xs:complexType>
+                                    <xs:simpleContent>
+                                          <xs:extension base="xs:string">
+                                                <xs:attribute type="xs:string" name="resourceTypeGeneral"/>
+                                          </xs:extension>
+                                    </xs:simpleContent>
+                              </xs:complexType>
+                        </xs:element>
+                        <xs:element name="sizes">
+                              <xs:complexType>
+                                    <xs:sequence>
+                                          <xs:element type="xs:string" name="size"/>
+                                    </xs:sequence>
+                              </xs:complexType>
+                        </xs:element>
+                        <xs:element name="formats">
+                              <xs:complexType>
+                                    <xs:sequence>
+                                          <xs:element type="xs:string" name="format" maxOccurs="unbounded" minOccurs="0"/>
+                                    </xs:sequence>
+                              </xs:complexType>
+                        </xs:element>
+                        <xs:element type="xs:float" name="version"/>
+                        <xs:element name="descriptions">
+                              <xs:complexType>
+                                    <xs:sequence>
+                                          <xs:element name="description">
+                                                <xs:complexType>
+                                                      <xs:simpleContent>
+                                                            <xs:extension base="xs:string">
+                                                                  <xs:attribute type="xs:string" name="descriptionType"/>
+                                                            </xs:extension>
+                                                      </xs:simpleContent>
+                                                </xs:complexType>
+                                          </xs:element>
+                                    </xs:sequence>
+                              </xs:complexType>
+                        </xs:element>
+                  </xs:sequence>
+            </xs:complexType>
+      </xs:element>
+</xs:schema>
