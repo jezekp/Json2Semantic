@@ -1,0 +1,155 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "_index": {
+      "type": "string"
+    },
+    "_type": {
+      "type": "string"
+    },
+    "_id": {
+      "type": "string"
+    },
+    "_score": {
+      "type": "integer"
+    },
+    "_source": {
+      "type": "object",
+      "properties": {
+        "experimentId": {
+          "type": "string"
+        },
+        "params": {
+          "type": "array",
+          "items": {}
+        },
+        "userId": {
+          "type": "integer"
+        },
+        "groupId": {
+          "type": "integer"
+        },
+        "metadata": {
+          "type": "object",
+          "properties": {
+            "odML": {
+              "type": "object",
+              "properties": {
+                "xmlns:gui": {
+                  "type": "string"
+                },
+                "date": {
+                  "type": "string"
+                },
+                "section": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "section": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "property": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "gui:required": {
+                                  "type": "boolean"
+                                },
+                                "gui:order": {
+                                  "type": "integer"
+                                },
+                                "name": {
+                                  "type": "string"
+                                },
+                                "value": {
+                                  "type": "object",
+                                  "properties": {
+                                    "content": {
+                                      "type": "string"
+                                    },
+                                    "type": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "content",
+                                    "type"
+                                  ]
+                                },
+                                "gui:editable": {
+                                  "type": "boolean"
+                                }
+                              },
+                              "required": [
+                                "gui:required",
+                                "gui:order",
+                                "name",
+                                "value",
+                                "gui:editable"
+                              ]
+                            }
+                          },
+                          "type": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "property",
+                          "type"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "type",
+                      "section"
+                    ]
+                  }
+                },
+                "version": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "xmlns:gui",
+                "date",
+                "section",
+                "version"
+              ]
+            }
+          },
+          "required": [
+            "odML"
+          ]
+        }
+      },
+      "required": [
+        "experimentId",
+        "params",
+        "userId",
+        "groupId",
+        "metadata"
+      ]
+    }
+  },
+  "required": [
+    "_index",
+    "_type",
+    "_id",
+    "_score",
+    "_source"
+  ]
+}

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  This file is part of the EEG-database project
+  
+    ==========================================
+   
+    Copyright (C) 2013 by University of West Bohemia (http://www.zcu.cz/en/)
+   
+   ***********************************************************************************************************************
+   
+    Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+    the License. You may obtain a copy of the License at
+   
+        http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+    an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+    specific language governing permissions and limitations under the License.
+   
+   ***********************************************************************************************************************
+   
+    log4j.xml, 2013/10/02 00:01 Jakub Rinkes
+-->
+<!DOCTYPE log4j:configuration SYSTEM
+        "D:\Projects\EEG-Database\Idea-SVN\branches\maven_build\src\main\resources\log4j.dtd">
+<!-- Basic log4j logger configuration. It's configured to save all debugs or errors into the log file by the append at the end of log file method. -->
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false" threshold="all">
+
+    <appender name="logFile" class="org.apache.log4j.DailyRollingFileAppender">
+    <!-- 
+	Relative to the folder where your application runs - usually the target/eegdatabase.war gets copied to the container folder.
+	i.e. on OSX it is something like /usr/local/Cellar/tomcat/7.0.47/libexec/bin (when you installed tomcat via homebrew)
+	
+	If this doesn't fit to everyone, ${user.home}/eegdatabase.log can be used instead - then 
+	/Users/bydga/logs/eegdatabase.log will be used on OSX or
+	C:\Users\bydga\eegdatabase.log on Windows
+    -->
+        <param name="File" value="/tmp/sftest.log" />
+        <param name="Append" value="true" />
+        <param name="DatePattern" value=".yyyy-MM-dd" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] %C %p - %m%n" />
+
+        </layout>
+    </appender>
+
+    <appender name="console" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{dd.MM.yyyy HH:mm:ss} %-5p %c{1} - %m%n" />
+        </layout>
+    </appender>
+    
+    <appender name="mail" class="org.apache.log4j.net.SMTPAppender">
+        <param name="BufferSize" value="40" />
+        <param name="SMTPHost" value="smtp.zcu.cz" />
+        <param name="From" value="eeg-base@kiv.zcu.cz" />
+<!--         Comma separated target address -->
+        <param name="To" value="jezekp@kiv.zcu.cz,stebjan@kiv.zcu.cz" />
+        <param name="Subject" value="EEGDatabase - exception in application" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] %C %p - %m%n" />
+
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="error" />
+            <param name="LevelMax" value="fatal" />
+        </filter>
+    </appender>
+
+
+    <root>
+        <priority value="debug" />
+        <appender-ref ref="logFile" />
+        <appender-ref ref="console" />
+<!--         Allow this mail appender for production -->
+<!--         <appender-ref ref="mail" /> -->
+    </root>
+</log4j:configuration>
