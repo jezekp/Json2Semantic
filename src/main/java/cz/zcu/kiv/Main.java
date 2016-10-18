@@ -5,6 +5,7 @@ import com.google.gson.stream.JsonReader;
 
 
 import cz.zcu.kiv.data.crcns.json.Crcns;
+import cz.zcu.kiv.data.crcns.json.Crcnsjson;
 import cz.zcu.kiv.data.crcns.json.Doc;
 import cz.zcu.kiv.data.crcns.xml.CrcnsDocument;
 import cz.zcu.kiv.data.crcns.xml.Resource;
@@ -39,6 +40,7 @@ public class Main {
                 byte[] tmpRes = Base64.decodeBase64(item.getXml());
                 String xmlRes = new String(tmpRes);
                 Resource resource = (Resource) jaxbUnmarshaller.unmarshal(new StringReader(xmlRes));
+                //System.out.println(xmlRes);
                 resList.add(new CrcnsDocument(item, resource));
             }
 
@@ -55,7 +57,33 @@ public class Main {
 			/* get the ontology document in RDF/XML */
             FileOutputStream out = new FileOutputStream("ontologyDocument.rdf.xml");
             jbe.writeOntologyDocument(out, Syntax.RDF_XML);
+            reader.close();
             out.close();
+
+            String file2 = "/home/petr-jezek/CRCNs_data/crcnsjson.json";
+            JsonReader reader2 = new JsonReader(new FileReader(file2));
+            reader.setLenient(true);
+
+            List<Object> resList2 = new ArrayList<Object>();
+            Crcnsjson res2 = gson.fromJson(reader2, Crcnsjson.class);
+            resList2.add(res2);
+
+            JenaBeanExtensionTool jbe2 = new JenaBeanExtensionTool();
+
+			/* load the ontology header from a file */
+            //jbe.loadStatements(new FileInputStream("ontologyHeader.rdf.xml"), Syntax.RDF_XML_ABBREV);
+            /* load and transform the OOM */
+
+
+            jbe2.loadOOM(resList2, false);
+
+			/* get the ontology document in RDF/XML */
+            FileOutputStream out2 = new FileOutputStream("ontologyDocument3.rdf.xml");
+            jbe2.writeOntologyDocument(out2, Syntax.RDF_XML);
+            reader2.close();
+            out2.close();
+
+
 
         } catch (Exception e) {
             e.printStackTrace();
