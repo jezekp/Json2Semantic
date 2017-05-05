@@ -12,10 +12,10 @@ the crcnsjson.json is simultaneously a document
 * mvn package
 * java -jar target/SemanticFrameworkTest-1.0-SNAPSHOT-jar-with-dependencies.jar 
 
-###TODO 
+### TODO 
 * make the input/output parametrizable
 
-###Notes
+### Notes
 A org.jsonschema2pojo transformation is done according to the input json file.
 
 
