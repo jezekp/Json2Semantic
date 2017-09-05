@@ -1,0 +1,186 @@
+{
+    "groups": [
+        {
+            "attributes": [
+                {
+                    "doc": "Short description of what this type of Interface contains.", 
+                    "name": "help", 
+                    "dtype": "text"
+                }, 
+                {
+                    "doc": "Path to the origin of the data represented in this interface.", 
+                    "name": "source", 
+                    "dtype": "text"
+                }
+            ], 
+            "neurodata_type_def": "NWBContainer", 
+            "doc": "The attributes specified here are included in all interfaces."
+        }, 
+        {
+            "datasets": [
+                {
+                    "dims": [
+                        "num_times"
+                    ], 
+                    "shape": [
+                        null
+                    ], 
+                    "name": "control", 
+                    "doc": "Numerical labels that apply to each element in data[]. COMMENT: Optional field. If present, the control array should have the same number of elements as data[].", 
+                    "dtype": "uint8", 
+                    "quantity": "?"
+                }, 
+                {
+                    "dims": [
+                        "num_control_values"
+                    ], 
+                    "shape": [
+                        null
+                    ], 
+                    "name": "control_description", 
+                    "doc": "Description of each control value. COMMENT: Array length should be as long as the highest number in control minus one, generating an zero-based indexed array for control values.", 
+                    "dtype": "text", 
+                    "quantity": "?"
+                }, 
+                {
+                    "dims": [
+                        "num_times"
+                    ], 
+                    "shape": [
+                        null
+                    ], 
+                    "name": "data", 
+                    "dtype": "any", 
+                    "doc": "Data values. Can also store binary data (eg, image frames) COMMENT: This field may be a link to data stored in an external file, especially in the case of raw data.", 
+                    "attributes": [
+                        {
+                            "default_value": 1.0, 
+                            "doc": "Scalar to multiply each element in data to convert it to the specified unit", 
+                            "required": false, 
+                            "name": "conversion", 
+                            "dtype": "float32!"
+                        }, 
+                        {
+                            "default_value": 0.0, 
+                            "doc": "Smallest meaningful difference between values in data, stored in the specified by unit. COMMENT: E.g., the change in value of the least significant bit, or a larger number if signal noise is known to be present. If unknown, use NaN", 
+                            "required": false, 
+                            "name": "resolution", 
+                            "dtype": "float32!"
+                        }, 
+                        {
+                            "doc": "The base unit of measure used to store data. This should be in the SI unit. COMMENT: This is the SI unit (when appropriate) of the stored data, such as Volts. If the actual data is stored in millivolts, the field 'conversion' below describes how to convert the data to the specified SI unit.", 
+                            "name": "unit", 
+                            "dtype": "text"
+                        }
+                    ]
+                }, 
+                {
+                    "attributes": [
+                        {
+                            "doc": "Sampling rate, in Hz COMMENT: Rate information is stored in Hz", 
+                            "name": "rate", 
+                            "dtype": "float32!"
+                        }, 
+                        {
+                            "doc": "Value is 'Seconds'", 
+                            "name": "unit", 
+                            "value": "Seconds", 
+                            "dtype": "text"
+                        }
+                    ], 
+                    "doc": "The timestamp of the first sample. COMMENT: When timestamps are uniformly spaced, the timestamp of the first sample can be specified and all subsequent ones calculated from the sampling rate.", 
+                    "dtype": "float64!", 
+                    "name": "starting_time", 
+                    "quantity": "?"
+                }, 
+                {
+                    "dims": [
+                        "num_times"
+                    ], 
+                    "shape": [
+                        null
+                    ], 
+                    "name": "timestamps", 
+                    "dtype": "float64!", 
+                    "doc": "Timestamps for samples stored in data.COMMENT: Timestamps here have all been corrected to the common experiment master-clock. Time is stored as seconds and all timestamps are relative to experiment start time.", 
+                    "attributes": [
+                        {
+                            "doc": "Value is '1'", 
+                            "name": "interval", 
+                            "value": 1, 
+                            "dtype": "int32"
+                        }, 
+                        {
+                            "doc": "Value is 'Seconds'", 
+                            "name": "unit", 
+                            "value": "Seconds", 
+                            "dtype": "text"
+                        }
+                    ]
+                }
+            ], 
+            "groups": [
+                {
+                    "doc": "Lab specific time and sync information as provided directly from hardware devices and that is necessary for aligning all acquired time information to a common timebase. The timestamp array stores time in the common timebase. COMMENT: This group will usually only be populated in TimeSeries that are stored external to the NWB file, in files storing raw data. Once timestamp data is calculated, the contents of 'sync' are mostly for archival purposes.", 
+                    "name": "sync", 
+                    "quantity": "?"
+                }
+            ], 
+            "neurodata_type_inc": "NWBContainer", 
+            "doc": "General purpose time series.", 
+            "neurodata_type_def": "TimeSeries", 
+            "attributes": [
+                {
+                    "default_value": "no comments", 
+                    "doc": "Human-readable comments about the TimeSeries. This second descriptive field can be used to store additional information, or descriptive information if the primary description field is populated with a computer-readable string.", 
+                    "required": false, 
+                    "name": "comments", 
+                    "dtype": "text"
+                }, 
+                {
+                    "default_value": "no description", 
+                    "doc": "Description of TimeSeries", 
+                    "required": false, 
+                    "name": "description", 
+                    "dtype": "text"
+                }, 
+                {
+                    "doc": "Value is 'General time series object'", 
+                    "name": "help", 
+                    "value": "General time series object", 
+                    "dtype": "text"
+                }, 
+                {
+                    "doc": "Name of TimeSeries or Modules that serve as the source for the data contained here. It can also be the name of a device, for stimulus or acquisition data", 
+                    "name": "source", 
+                    "dtype": "text"
+                }
+            ]
+        }, 
+        {
+            "attributes": [
+                {
+                    "doc": "Description of Module", 
+                    "name": "description", 
+                    "dtype": "text"
+                }, 
+                {
+                    "doc": "Value is 'A collection of analysis outputs from processing of data'", 
+                    "name": "help", 
+                    "value": "A collection of analysis outputs from processing of data", 
+                    "dtype": "text"
+                }
+            ], 
+            "neurodata_type_def": "ProcessingModule", 
+            "neurodata_type_inc": "NWBContainer", 
+            "groups": [
+                {
+                    "doc": "Interface objects containing data output from processing steps", 
+                    "neurodata_type_inc": "NWBContainer", 
+                    "quantity": "*"
+                }
+            ], 
+            "doc": "Module.  Name should be descriptive. Stores a collection of related data organized by contained interfaces.  Each interface is a contract specifying content related to a particular type of data."
+        }
+    ]
+}
