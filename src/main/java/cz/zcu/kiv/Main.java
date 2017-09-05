@@ -4,20 +4,13 @@ import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
 
-import cz.zcu.kiv.data.crcns.json.Crcns;
+
 import cz.zcu.kiv.data.crcns.json.Crcnsjson;
-import cz.zcu.kiv.data.crcns.json.Doc;
-import cz.zcu.kiv.data.crcns.xml.CrcnsDocument;
-import cz.zcu.kiv.data.crcns.xml.Resource;
-import org.apache.commons.codec.binary.Base64;
 import tools.JenaBeanExtensionTool;
 import tools.Syntax;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Unmarshaller;
 import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
