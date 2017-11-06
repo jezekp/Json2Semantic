@@ -10,7 +10,7 @@ Json given as a parameter is transferred to an ontology RDF/OWL document.
 ## Run
 * clone repository
 * mvn package
-* java -jar target/SemanticFrameworkTest-1.0-SNAPSHOT-jar-with-dependencies.jar filename
+* java -jar target/Json2Semantic-1.0-SNAPSHOT-jar-with-dependencies.jar filename
 
 
 ### Notes
